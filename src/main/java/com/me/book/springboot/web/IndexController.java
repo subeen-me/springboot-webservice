@@ -18,7 +18,6 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) { //Model - 서버 템플릿 안에서 사용할 수 있는 객체를 저장할 수 있다.
@@ -29,7 +28,6 @@ public class IndexController {
         if(user != null) { //세션에 저장된 값이 있을 때만 model에 userName으로 등록.
             model.addAttribute("userName", user.getName());
         }
-
         return "index";
     }
 
